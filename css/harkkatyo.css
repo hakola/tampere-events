@@ -1,0 +1,54 @@
+div.otsikko {
+}
+
+#map {
+	height: 50vw;
+	max-height: 800px;
+}
+
+.form-group {
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom: 10px;
+}
+
+input.form-control {
+	width: 10px;
+}
+
+.panel-heading {
+	background-color: black;
+}
+
+.gm-style .gm-style-iw {
+   font-size: 14px;
+   font-weight: bold;
+   color: black;
+}
+
+#event-btn {
+	text-align: left;
+	padding: 10px;
+	cursor: pointer;
+}
+
+#info {
+	margin-top: 5px;
+}
+
+#cal {
+	cursor: pointer;
+}
+
+#search {
+	margin-left: 10px;
+}
+
+
+body {
+	background: url('../img/tampere.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
