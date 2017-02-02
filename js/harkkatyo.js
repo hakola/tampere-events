@@ -10,20 +10,27 @@
 
 	/* Getting events from the visittampere database */
 	function getEvents(url) {
+		console.log(url);
 		if(url == null)
-			url = "http://visittampere.fi:80/api/search?type=event&start_datetime="+Date.now()+"&limit=10";
-		$.ajax({
-			type: "GET",
-			dataType:"json", 
-			url: url, 
-			data: "", // mahdollinen kysely (query string)
+			url = "https://visittampere.fi/api/search?type=event&end_datetime="+Date.now()+"&limit=10";
+		
+        $.ajax({
+	   		headers: {
+		      	'Access-Control-Allow-Origin': '*',
+		      	'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
+        		'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
+		   	},
+	        url: url,
+	        type: 'GET',
+	        dataType: 'json',
 			success: function (eData) {
 				createList(eData);
 			},
-			error: function() {
+			error: function(e) {
+				console.log(e.message);
 				alert( "Tiedon noutaminen ei onnistunut" );
 			}
-		})
+	     });
 	}
 
 	/* Storing information got from database to an array and using it to call writelist and initmap functions */
@@ -176,7 +183,7 @@
 
 	/* Constructing the database call */
 	$('#search').click(function() {
-		var url = "http://visittampere.fi:80/api/search?type=event";
+		var url = "https://visittampere.fi/api/search?type=event";
 		if($('#category-picker').val() != "") {
 			url += "&tag="+$('#category-picker').val();
 		}
@@ -195,7 +202,6 @@
 		}
 		url += "&limit=10";
 		getEvents(url);
-
 	})
 
 	$('#show-all').click(function() {
@@ -241,4 +247,5 @@
 	var markers;
 	var eventPos;
 	getEvents();
+	console.log(Date.now());
 })()
