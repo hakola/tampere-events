@@ -236,7 +236,7 @@
 
 		      alert(message); 
 		  }
-	})
+	}) 
 	$('#show-all').hide();
 
 	// Initialising variables
